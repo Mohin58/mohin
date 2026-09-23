@@ -2,8 +2,6 @@ const progress = document.querySelector('#progress');
 const menuToggle = document.querySelector('#menuToggle');
 const nav = document.querySelector('.main-nav');
 const themeToggle = document.querySelector('#themeToggle');
-const contactForm = document.querySelector('#contactForm');
-const formStatus = document.querySelector('#formStatus');
 
 window.addEventListener('scroll', () => {
   const scrollable = document.documentElement.scrollHeight - window.innerHeight;
@@ -49,12 +47,3 @@ const activeObserver = new IntersectionObserver((entries) => {
 }, { rootMargin: '-30% 0px -60% 0px' });
 
 sections.forEach((section) => activeObserver.observe(section));
-
-contactForm.addEventListener('submit', (event) => {
-  event.preventDefault();
-  const formData = new FormData(contactForm);
-  const subject = `Website enquiry from ${formData.get('name')}`;
-  const body = `Name: ${formData.get('name')}\nEmail: ${formData.get('email')}\n\n${formData.get('message')}`;
-  window.location.href = `mailto:mdmohinuddin58@yahoo.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-  formStatus.textContent = 'Your email app is opening with the message ready to send.';
-});
